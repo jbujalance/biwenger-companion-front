@@ -1,0 +1,25 @@
+<main class="container" role="main">
+  <h1 class="mt-5 mb-3">BALANCES</h1>
+
+  <h2 class="mb-3">Balances totales</h2>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col" class="d-none d-sm-table-cell">Vendido</th>
+        <th scope="col" class="d-none d-sm-table-cell">Gastado</th>
+        <th scope="col" class="d-none d-sm-table-cell">Fin de jornada</th>
+        <th scope="col">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userBalance of userBalances">
+        <td>{{userBalance.name}}</td>
+        <td class="d-none d-sm-table-cell">{{userBalance.spend | currency:'EUR':'symbol':'1.0-0'}}</td>
+        <td class="d-none d-sm-table-cell">{{userBalance.gain | currency:'EUR':'symbol':'1.0-0'}}</td>
+        <td class="d-none d-sm-table-cell">{{userBalance.roundsBonus | currency:'EUR':'symbol':'1.0-0'}}</td>
+        <td>{{userBalance.balance | currency:'EUR':'symbol':'1.0-0'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</main>
