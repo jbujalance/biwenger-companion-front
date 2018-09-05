@@ -12,18 +12,11 @@ export class BalancesService {
 
   private readonly url: string = 'https://biwengertransfers.herokuapp.com/api/balances';
   private readonly initialCapital: number = 20_000_000;
-  private httpOptions: object;
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': authService.getTokenHeader()
-      })
-    };
-  }
+  constructor(private http: HttpClient) { }
 
   getBalances(): Observable<IUserBalance[]> {
-    return this.http.get<IUserBalance[]>(this.url, this.httpOptions)
+    return this.http.get<IUserBalance[]>(this.url)
     .pipe(
       map((userBalances: IUserBalance[]) => {
         userBalances.forEach((userBalance: IUserBalance) => userBalance.balance += this.initialCapital);
