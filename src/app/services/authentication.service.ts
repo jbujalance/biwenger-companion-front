@@ -51,4 +51,12 @@ export class AuthenticationService {
     const userDetails = this.getUserDetails();
     return userDetails ? userDetails.exp > Date.now() / 1000 : false;
   }
+
+  public isInRole(pRole: string): boolean {
+    if (!this.isLoggedIn()) {
+      return false;
+    }
+    let userDetails = this.getUserDetails();
+    return userDetails.roles.includes(pRole);
+  }
 }
