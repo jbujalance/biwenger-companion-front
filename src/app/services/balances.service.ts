@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IUserBalance } from '../model/user-balance';
 import { map } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BalancesService {
 
-  private readonly url: string = 'https://biwengertransfers.herokuapp.com/api/balances';
+  private readonly url: string = environment.apiUrl + 'balances';
   private readonly initialCapital: number = 20_000_000;
 
   constructor(private http: HttpClient) { }

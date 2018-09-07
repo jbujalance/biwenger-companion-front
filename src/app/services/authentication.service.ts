@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IUserDetails } from '../model/user-details';
 
@@ -11,7 +10,6 @@ export class AuthenticationService {
   private token: string;
   private userDeatils: IUserDetails;
   private readonly TOKEN_KEY: string = 'token';
-  private readonly HEADER_PREFIX: string = 'Bearer ';
 
   constructor(private router: Router) { }
 
@@ -20,22 +18,18 @@ export class AuthenticationService {
     this.token = pToken;
   }
 
-  private getToken(): string {
+  public getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem(this.TOKEN_KEY);
     }
     return this.token;
   }
 
-  public getTokenHeader(): string {
-    return this.HEADER_PREFIX + this.getToken;
-  }
-
   public logout(): void {
     this.token = undefined;
     this.userDeatils = undefined;
     localStorage.removeItem(this.TOKEN_KEY);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/login');
   }
 
   public getUserDetails(): IUserDetails {

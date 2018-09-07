@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ILoginRegisterPayload } from '../model/login-register-payload';
 import { ITokenResponse } from '../model/token-response';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginRegisterService {
 
-  private readonly LOGIN_URL: string = 'https://biwengertransfers.herokuapp.com/api/login';
-  private readonly REGISTER_URL: string = 'https://biwengertransfers.herokuapp.com/api/register';
+  private readonly LOGIN_URL: string = environment.apiUrl + 'user/login';
+  private readonly REGISTER_URL: string = environment.apiUrl + 'user/register';
 
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
 
