@@ -1,23 +1,22 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ILoginRegisterPayload } from '../../model/login-register-payload';
 import { LoginRegisterService } from '../../services/login-register.service';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit {
 
-  public credentials: ILoginRegisterPayload = {
-    name: '',
-    email: '',
-    password: ''
-  };
-  private subscription: Subscription;
+  public registerForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', [ Validators.required, Validators.email ]),
+    password: new FormControl('', [ Validators.required, Validators.minLength(6) ])
+  });
 
   constructor(private authService: AuthenticationService, private registerService: LoginRegisterService, private router: Router) { }
 
@@ -28,16 +27,30 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   register(): void {
-    this.subscription = this.registerService.register(this.credentials).subscribe(() => {
+    this.registerService.register(this.formToPayload()).subscribe(() => {
       this.router.navigateByUrl('/payments');
     }, err => {
       console.error(err);
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+  get name(): AbstractControl {
+    return this.registerForm.get('name');
+  }
+
+  get email(): AbstractControl {
+    return this.registerForm.get('email');
+  }
+
+  get password(): AbstractControl {
+    return this.registerForm.get('password');
+  }
+
+  private formToPayload(): ILoginRegisterPayload {
+    return {
+      name: this.name.value,
+      email: this.email.value,
+      password: this.password.value
     }
   }
 
