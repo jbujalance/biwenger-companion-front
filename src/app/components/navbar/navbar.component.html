@@ -1,22 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav *ngIf='authService.isLoggedIn()' class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="#">
     Biwenger Companion
   </a>
 
-  <button class="navbar-toggler"
-          type="button"
-          (click)="toggleNavbar()">
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/payments">Pagas</a>
+        <a class="nav-link" (click)="toggleNavbar()" routerLink="/payments">Pagas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/balances">Balances</a>
+        <a class="nav-link" (click)="toggleNavbar()" routerLink="/balances">Balances</a>
       </li>
     </ul>
+    <form class="navbar-form navbar-rigth">
+      <button type="submit" class="btn btn-default" (click)="authService.logout()">Logout</button>
+    </form>
   </div>
+
 </nav>  
