@@ -15,6 +15,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { BalancesGuard } from './guards/balances.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
+import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,11 @@ import { AlertComponent } from './components/alert/alert.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
       multi: true
     }
   ],
