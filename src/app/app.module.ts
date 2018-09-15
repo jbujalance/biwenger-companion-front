@@ -16,6 +16,8 @@ import { BalancesGuard } from './guards/balances.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
+import { TabComponent } from './components/tab/tab.component';
+import { TabGroupComponent } from './components/tab-group/tab-group.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     FooterComponent,
     RegisterComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    TabComponent,
+    TabGroupComponent
   ],
   imports: [
     BrowserModule,
