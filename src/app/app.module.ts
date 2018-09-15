@@ -18,6 +18,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
 import { TabComponent } from './components/tab/tab.component';
 import { TabGroupComponent } from './components/tab-group/tab-group.component';
+import { TotalPaymentsComponent } from './components/payments/total-payments/total-payments.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TabGroupComponent } from './components/tab-group/tab-group.component';
     LoginComponent,
     AlertComponent,
     TabComponent,
-    TabGroupComponent
+    TabGroupComponent,
+    TotalPaymentsComponent
   ],
   imports: [
     BrowserModule,

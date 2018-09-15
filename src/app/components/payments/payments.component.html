@@ -1,19 +1,10 @@
-<main class="container" role="main">
-  <h1 class="mt-5 mb-3">PAGAS</h1>
-
-  <h2 class="mb-3">Pagas totales</h2>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Paga total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let userPayment of userPayments">
-        <td>{{userPayment.name}}</td>
-        <td>{{userPayment.payment | currency:'EUR':'symbol':'1.2-2'}}</td>
-      </tr>
-    </tbody>
-  </table>
-</main>
+<div class="mt-1">
+  <tab-group>
+    <tab tabTitle="Total payments">
+      <app-total-payments></app-total-payments>
+    </tab>
+    <tab tabTitle="Round payments">
+      Roun payments content
+    </tab>
+  </tab-group>
+</div>
