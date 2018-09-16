@@ -20,6 +20,7 @@ import { TabComponent } from './components/tab/tab.component';
 import { TabGroupComponent } from './components/tab-group/tab-group.component';
 import { TotalPaymentsComponent } from './components/payments/total-payments/total-payments.component';
 import { CollapsiblePanelComponent } from './components/collapsible-panel/collapsible-panel.component';
+import { RoundsComponent } from './components/payments/rounds/rounds.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CollapsiblePanelComponent } from './components/collapsible-panel/collap
     TabComponent,
     TabGroupComponent,
     TotalPaymentsComponent,
-    CollapsiblePanelComponent
+    CollapsiblePanelComponent,
+    RoundsComponent
   ],
   imports: [
     BrowserModule,
