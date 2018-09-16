@@ -19,6 +19,7 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
 import { TabComponent } from './components/tab/tab.component';
 import { TabGroupComponent } from './components/tab-group/tab-group.component';
 import { TotalPaymentsComponent } from './components/payments/total-payments/total-payments.component';
+import { CollapsiblePanelComponent } from './components/collapsible-panel/collapsible-panel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TotalPaymentsComponent } from './components/payments/total-payments/tot
     AlertComponent,
     TabComponent,
     TabGroupComponent,
-    TotalPaymentsComponent
+    TotalPaymentsComponent,
+    CollapsiblePanelComponent
   ],
   imports: [
     BrowserModule,
