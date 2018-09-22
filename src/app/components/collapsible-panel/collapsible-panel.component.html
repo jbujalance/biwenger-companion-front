@@ -1,0 +1,8 @@
+<div class="card my-2">
+  <div class="card-header" (click)="toggle()">
+    {{title}}
+  </div>
+  <div class="card-body" *ngIf="isOpen">
+    <ng-content></ng-content>
+  </div>
+<div>

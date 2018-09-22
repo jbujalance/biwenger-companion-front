@@ -1,0 +1,22 @@
+<div class="container">
+  <collapsible-panel *ngFor="let round of rounds" title={{round.roundName}}>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Puntos</th>
+            <th scope="col">Paga</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let standing of round.standings">
+            <td>{{standing.position}}</td>
+            <td>{{standing.biwengerUserName}}</td>
+            <td>{{standing.points}}</td>
+            <td>{{standing.payment | currency:'EUR':'symbol':'1.0-2'}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </collapsible-panel>
+</div>
