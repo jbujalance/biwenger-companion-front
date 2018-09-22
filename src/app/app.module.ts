@@ -16,6 +16,11 @@ import { BalancesGuard } from './guards/balances.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
+import { TabComponent } from './components/tab/tab.component';
+import { TabGroupComponent } from './components/tab-group/tab-group.component';
+import { TotalPaymentsComponent } from './components/payments/total-payments/total-payments.component';
+import { CollapsiblePanelComponent } from './components/collapsible-panel/collapsible-panel.component';
+import { RoundsComponent } from './components/payments/rounds/rounds.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
     FooterComponent,
     RegisterComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    TabComponent,
+    TabGroupComponent,
+    TotalPaymentsComponent,
+    CollapsiblePanelComponent,
+    RoundsComponent
   ],
   imports: [
     BrowserModule,
