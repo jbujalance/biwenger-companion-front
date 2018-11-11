@@ -4,5 +4,6 @@ export interface IUserBalance {
     gain: number,
     spend: number,
     roundsBonus: number,
+    adminBonus: number,
     balance: number
 }
