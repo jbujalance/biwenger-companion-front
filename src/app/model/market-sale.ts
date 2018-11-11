@@ -5,6 +5,6 @@ export interface IMarketSale {
     price: number,
     date: Date,
     until: Date,
-    plater: IMarketPlayer,
+    player: IMarketPlayer,
     user: IMarketUser
 }
