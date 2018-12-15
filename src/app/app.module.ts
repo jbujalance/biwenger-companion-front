@@ -21,6 +21,7 @@ import { TabGroupComponent } from './components/tab-group/tab-group.component';
 import { TotalPaymentsComponent } from './components/payments/total-payments/total-payments.component';
 import { CollapsiblePanelComponent } from './components/collapsible-panel/collapsible-panel.component';
 import { RoundsComponent } from './components/payments/rounds/rounds.component';
+import { MarketComponent } from './components/market/market.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RoundsComponent } from './components/payments/rounds/rounds.component';
     TabGroupComponent,
     TotalPaymentsComponent,
     CollapsiblePanelComponent,
-    RoundsComponent
+    RoundsComponent,
+    MarketComponent
   ],
   imports: [
     BrowserModule,
