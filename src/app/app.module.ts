@@ -12,7 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { BalancesGuard } from './guards/balances.guard';
+import { RoleGuard } from './guards/role.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
@@ -22,6 +22,7 @@ import { TotalPaymentsComponent } from './components/payments/total-payments/tot
 import { CollapsiblePanelComponent } from './components/collapsible-panel/collapsible-panel.component';
 import { RoundsComponent } from './components/payments/rounds/rounds.component';
 import { MarketComponent } from './components/market/market.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MarketComponent } from './components/market/market.component';
     TotalPaymentsComponent,
     CollapsiblePanelComponent,
     RoundsComponent,
-    MarketComponent
+    MarketComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { MarketComponent } from './components/market/market.component';
   ],
   providers: [
     AuthGuard,
-    BalancesGuard,
+    RoleGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
