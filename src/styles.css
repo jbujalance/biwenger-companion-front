@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* This padding in the body prevents the fixed navbar to cover the content. */
+body {
+    padding-top: 57px;
+}
