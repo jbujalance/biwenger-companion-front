@@ -23,6 +23,8 @@ import { CollapsiblePanelComponent } from './components/collapsible-panel/collap
 import { RoundsComponent } from './components/payments/rounds/rounds.component';
 import { MarketComponent } from './components/market/market.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { AdminComponent } from './components/admin/admin.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AuthGuard,
