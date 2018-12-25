@@ -6,6 +6,7 @@ import { throwError } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { IIdentifiedPushSubscription } from '../model/identified-push-subscription';
 import { catchError } from 'rxjs/operators';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class PushNotificationService {
 
   private readonly URL: string = environment.apiUrl + 'push/subscribe';
 
-  constructor(private swPush: SwPush, private http: HttpClient, private authService: AuthenticationService) { }
+  constructor(private swPush: SwPush, private http: HttpClient, private authService: AuthenticationService, private deviceService: DeviceDetectorService) { }
 
   requestPushSubscription(): void {
     if (!this.swPush.isEnabled || !this.authService.isLoggedIn()) {
@@ -34,8 +35,9 @@ export class PushNotificationService {
   private sendSubscriptionToServer(subscription: PushSubscription) {
     let postBody: IIdentifiedPushSubscription = {
       userId: this.authService.getUserDetails()._id,
-      subscription: subscription.toJSON()
-    }
+      subscription: subscription.toJSON(),
+      device: this.deviceService.getDeviceInfo()
+    };
     return this.http.post(this.URL, postBody)
       .pipe(
         catchError(this.handlePostError)
