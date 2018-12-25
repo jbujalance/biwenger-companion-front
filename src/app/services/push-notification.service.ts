@@ -32,8 +32,10 @@ export class PushNotificationService {
   }
 
   private sendSubscriptionToServer(subscription: PushSubscription) {
-    let postBody: IIdentifiedPushSubscription = subscription.toJSON();
-    postBody.userId = this.authService.getUserDetails()._id;
+    let postBody: IIdentifiedPushSubscription = {
+      userId: this.authService.getUserDetails()._id,
+      subscription: subscription.toJSON()
+    }
     return this.http.post(this.URL, postBody)
       .pipe(
         catchError(this.handlePostError)
