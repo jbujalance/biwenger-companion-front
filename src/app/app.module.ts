@@ -25,6 +25,7 @@ import { MarketComponent } from './components/market/market.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    DeviceDetectorModule.forRoot()
   ],
   providers: [
     AuthGuard,
