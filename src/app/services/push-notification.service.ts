@@ -19,7 +19,12 @@ export class PushNotificationService {
 
   requestPushSubscription(): void {
     if (!this.swPush.isEnabled || !this.authService.isLoggedIn()) {
-      console.warn('The subscription to notifications has not been requested.');
+      console.warn('The subscription to notifications has not been requested. Either the service worker is not enabled or the user is not logged in.');
+      return;
+    }
+    // If a push subscription is already registered, we do not request a new subscriptiton
+    if (!!this.swPush.subscription) {
+      console.warn('A push subscription is already registered in this service worker.');
       return;
     }
     this.swPush.requestSubscription({
