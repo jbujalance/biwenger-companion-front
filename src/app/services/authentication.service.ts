@@ -8,7 +8,7 @@ import { IUserDetails } from '../model/user-details';
 export class AuthenticationService {
 
   private token: string;
-  private userDeatils: IUserDetails;
+  private userDetails: IUserDetails;
   private readonly TOKEN_KEY: string = 'token';
 
   constructor(private router: Router) { }
@@ -27,23 +27,23 @@ export class AuthenticationService {
 
   public logout(): void {
     this.token = undefined;
-    this.userDeatils = undefined;
+    this.userDetails = undefined;
     localStorage.removeItem(this.TOKEN_KEY);
     this.router.navigateByUrl('/login');
   }
 
   public getUserDetails(): IUserDetails {
-    if (!this.userDeatils) {
+    if (!this.userDetails) {
       const token = this.getToken();
       if (token) {
         let payload = token.split('.')[1];
         payload = atob(payload);
-        this.userDeatils = JSON.parse(payload);
+        this.userDetails = JSON.parse(payload);
       } else {
-        this.userDeatils = null;
+        this.userDetails = null;
       }
     }
-    return this.userDeatils;
+    return this.userDetails;
   }
 
   public isLoggedIn(): boolean {
