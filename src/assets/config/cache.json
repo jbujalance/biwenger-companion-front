@@ -1,0 +1,9 @@
+{
+    "available": true,
+    "cachedUrls": [
+        {
+            "url": "/api/balances",
+            "expiration": 900
+        }
+    ]
+}
