@@ -1,3 +1,5 @@
+import { HttpResponse } from '@angular/common/http';
+
 /**
  * The HTTP request cache configuration. It contains a boolean indicating if the cache is active or not,
  * and a set of caching configuration for every cached URL.
@@ -15,4 +17,10 @@ export interface IUrlCacheConfiguration {
     url: string,
     /** The expiration time of the cache, in seconds. */
     expiration: number
+}
+
+export interface ICacheEntry {
+    url: string,
+    response: HttpResponse<any>,
+    date: Date
 }
