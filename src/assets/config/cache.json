@@ -4,6 +4,14 @@
         {
             "url": "/api/balances",
             "expiration": 900
+        },
+        {
+            "url": "/api/payments",
+            "expiration": 900
+        },
+        {
+            "url": "/api/rounds",
+            "expiration": 900
         }
     ]
 }

@@ -1,37 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ICacheConfiguration, IUrlCacheConfiguration, ICacheEntry } from './cache-config';
-import { settings } from 'cluster';
+import CacheJson from '../../assets/config/cache.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CacheConfiguration {
 
-    private readonly configFilePath: string = "assets/config/cache.json";
-    private static settings: ICacheConfiguration;
+    private readonly configFilePath: string = "/assets/config/cache.json";
+    private settings: ICacheConfiguration;
 
-    constructor(private http: HttpClient) {}
+    constructor() {}
 
     load() {
         return new Promise<void>((resolve, reject) => {
-            this.http.get(this.configFilePath).toPromise().then((response : ICacheConfiguration) => {
-               CacheConfiguration.settings = <ICacheConfiguration>response;
-               console.log(`Loaded cache configuration from ${this.configFilePath}`);
-               resolve();
-            }).catch((response: any) => {
-               reject(`Could not load file '${this.configFilePath}': ${JSON.stringify(response)}`);
-            });
+            this.settings = CacheJson;
+            console.log(`Loaded cache configuration from ${this.configFilePath}`);
+            resolve();
         });
     }
 
     isAvailable(): boolean {
-        return CacheConfiguration.settings.available;
+        return this.settings.available;
     }
 
     getConfiguration(url: string): IUrlCacheConfiguration {
-        return CacheConfiguration.settings.cachedUrls.find((conf: IUrlCacheConfiguration) => {
-            url.includes(conf.url);
+        return this.settings.cachedUrls.find((conf: IUrlCacheConfiguration) => {
+            return url.includes(conf.url);
         });
     }
 

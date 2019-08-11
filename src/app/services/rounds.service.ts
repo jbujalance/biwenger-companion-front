@@ -9,7 +9,7 @@ import { IRound } from '../model/round';
 })
 export class RoundsService {
 
-  private readonly url: string = environment.apiUrl + 'rounds';
+  private readonly url: string = environment.apiUrl + 'rounds?season=2018';
 
   constructor(private http: HttpClient) { }
 

@@ -30,6 +30,7 @@ export class CacheService {
         date: new Date()
       }
       this.cache.set(request.urlWithParams, entry);
+      console.log(`Cache response for url ${request.urlWithParams}`);
     }
   }
 
@@ -37,6 +38,7 @@ export class CacheService {
     this.cache.forEach((cacheEntry: ICacheEntry, url: string, map: Map<string, ICacheEntry>) => {
       if (this.cacheConfig.isExpired(cacheEntry)) {
         map.delete(url);
+        console.log(`Deleted expired cache entry for ${url}`);
       }
     });
   }

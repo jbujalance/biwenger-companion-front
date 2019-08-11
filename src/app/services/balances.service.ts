@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class BalancesService {
 
-  private readonly url: string = environment.apiUrl + 'balances';
+  private readonly url: string = environment.apiUrl + 'balances?season=2018';
   private readonly initialCapital: number = 20_000_000;
 
   constructor(private http: HttpClient) { }
