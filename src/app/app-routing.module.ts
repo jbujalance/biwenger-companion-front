@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/payments', pathMatch: 'full' },
   { path: 'payments', component: PaymentsComponent, canActivate: [AuthGuard] },
   { path: 'balances', component: BalancesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'balances' } },
-  { path: 'market', component: MarketComponent, canActivate: [AuthGuard] },
+  { path: 'market', component: MarketComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'market' } },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'admin' } },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }
