@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -25,6 +25,12 @@ import { MarketComponent } from './components/market/market.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CacheConfiguration } from './config/cache.config';
+import { CachingInterceptor } from './interceptors/caching.interceptor';
+
+export function initializeApp(cacheConfig: CacheConfiguration) {
+  return () => cacheConfig.load();
+}
 
 @NgModule({
   declarations: [
@@ -55,6 +61,11 @@ import { environment } from '../environments/environment';
   providers: [
     AuthGuard,
     RoleGuard,
+    { provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [CacheConfiguration],
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
@@ -63,6 +74,11 @@ import { environment } from '../environments/environment';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UnauthorizedInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CachingInterceptor,
       multi: true
     }
   ],

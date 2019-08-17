@@ -38,6 +38,10 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "src/assets/config/cache.json",
+                  "with": "src/assets/config/cache.prod.json"
                 }
               ],
               "optimization": true,

@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class PaymentsService {
 
-  private readonly url: string = environment.apiUrl + 'payments';
+  private readonly url: string = environment.apiUrl + 'payments?season=2019';
 
   constructor(private http: HttpClient) { }
 
