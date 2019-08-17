@@ -1,0 +1,6 @@
+<div class="mt-2 mb-2 ml-2 mr-2">
+  <label>Temporada</label>
+  <select class="form-control mr-sm-2" [ngModel]="seasonService.getSelectedSeason() | async" (ngModelChange)="seasonService.setSelectedSeason($event)">
+    <option *ngFor="let season of seasons" [ngValue]="season">{{season.name}}</option>
+  </select>
+</div>

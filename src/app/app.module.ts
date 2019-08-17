@@ -27,6 +27,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CacheConfiguration } from './config/cache.config';
 import { CachingInterceptor } from './interceptors/caching.interceptor';
+import { SeasonSelectorComponent } from './components/season-selector/season-selector.component';
 
 export function initializeApp(cacheConfig: CacheConfiguration) {
   return () => cacheConfig.load();
@@ -48,7 +49,8 @@ export function initializeApp(cacheConfig: CacheConfiguration) {
     CollapsiblePanelComponent,
     RoundsComponent,
     MarketComponent,
-    AdminComponent
+    AdminComponent,
+    SeasonSelectorComponent
   ],
   imports: [
     BrowserModule,
