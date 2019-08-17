@@ -19,8 +19,13 @@ export class BalancesService {
     return this.http.get<IUserBalance[]>(this.url)
     .pipe(
       map((userBalances: IUserBalance[]) => {
-        userBalances.forEach((userBalance: IUserBalance) => userBalance.balance += this.initialCapital);
-        return userBalances;
+        // We copy the response in a new variable because if we modidfy the actual response,
+        // we will modify the response in the cache, and we don't want that.
+        // TODO The service should not be aware of the existence of the cache, the cache should return a deep copy of the cached response.
+        let copyUserBalances: IUserBalance[] = [];
+        userBalances.forEach((userBalance: IUserBalance) => copyUserBalances.push({...userBalance}));
+        copyUserBalances.forEach((userBalance: IUserBalance) => userBalance.balance += this.initialCapital);
+        return copyUserBalances;
       })
     );
   }
