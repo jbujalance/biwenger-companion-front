@@ -12,6 +12,10 @@
         {
             "url": "/api/rounds",
             "expiration": 900
+        },
+        {
+            "url": "/api/seasons",
+            "expiration": 3600
         }
     ]
 }
