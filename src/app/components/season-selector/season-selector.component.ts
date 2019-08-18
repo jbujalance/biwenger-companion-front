@@ -11,6 +11,7 @@ import { SeasonsService } from 'src/app/services/seasons.service';
 export class SeasonSelectorComponent implements OnInit, OnDestroy {
 
   public seasons: ISeason[];
+  public selectedSeason: ISeason;
   private seasonSubscription: Subscription;
 
   constructor(public seasonService: SeasonsService) { }
@@ -21,7 +22,10 @@ export class SeasonSelectorComponent implements OnInit, OnDestroy {
 
   getSeasons(): void {
     this.seasonSubscription = this.seasonService.getSeasons()
-      .subscribe((response: ISeason[]) => this.seasons = response);
+      .subscribe((response: ISeason[]) => {
+        this.seasons = response;
+        this.selectedSeason = this.seasons[0];
+      });
   }
 
   ngOnDestroy(): void {

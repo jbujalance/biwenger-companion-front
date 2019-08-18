@@ -10,15 +10,17 @@ import { ISeason } from '../model/season';
 export class SeasonsService {
 
   private static DEFAULT_SEASON: ISeason = {
-    _id: "0",
+    _id: "5d4eea7acc984376b04230af",
     key: 2019,
     name: "2019/2020"
-  }
-  private selectedSeason: BehaviorSubject<ISeason>;
+  };
+  private selectedSeason: BehaviorSubject<ISeason> = new BehaviorSubject<ISeason>(SeasonsService.DEFAULT_SEASON);
   private readonly url: string = environment.apiUrl + 'seasons';
 
   constructor(private http: HttpClient) {
-    this.selectedSeason = new BehaviorSubject<ISeason>(SeasonsService.DEFAULT_SEASON);
+    this.getCurrentSeason().toPromise().then((season: ISeason) => {
+      this.selectedSeason.next(season);
+    });
   }
 
   getSeasons(): Observable<ISeason[]> {
